@@ -10,8 +10,8 @@
 | 20120635 | Phan Đình Anh Quân |
 
 # Giới thiệu project quản lí học sinh
-- Chúng ta đang thực hiện chuyển đổi số, việc áp dụng công nghệ thông tin vào những công việc quản lý sẽ giúp ích rất nhiều.Đó là lí do nhóm xây dựng lên hệ thống quản lí học sinh
-- Hệ thống giúp ta quản lí  dữ liệu an toàn, tổ chức, sắp xếp dữ liệu một cách khoa học để tránh phải làm những công việc lặp đi lặp lại.
+- Chúng ta đang thực hiện chuyển đổi số, việc áp dụng công nghệ thông tin vào những công việc quản lý sẽ giúp ích rất nhiều. Đó là lí do nhóm xây dựng lên hệ thống quản lí học sinh.
+- Hệ thống giúp ta quản lí dữ liệu an toàn, tổ chức, sắp xếp dữ liệu một cách khoa học để tránh phải làm những công việc lặp đi lặp lại.
 
 # Môi trường thực thi
 
@@ -43,7 +43,7 @@
 
 
 
-**6. )**
+**6. **
 
 
 
