@@ -17,7 +17,7 @@
 
 - Hệ điều hành Windows 10, Windows 11, Linux
 - Framework: ReactJS, NodeJS
-- Database: MySQL
+- Database: MySQL, JSON
 
 # Hướng dẫn chạy project 
 
