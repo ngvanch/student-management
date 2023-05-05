@@ -16,7 +16,7 @@
 # Môi trường thực thi
 
 - Hệ điều hành Windows 10, Windows 11, Linux
-- Framework: ReactJS
+- Framework: ReactJS, NodeJS
 - Database: MySQL
 
 # Hướng dẫn chạy project 
