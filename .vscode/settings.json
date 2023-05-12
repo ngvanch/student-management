@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "back-end\\node_modules": true,
+        "back-end\\package-lock.json": true,
+        "back-end\\package.json": true,
+        "back-end\\README.md": true,
+        ".vscode": true,
+        "ProjectDB.sql": true,
+        "config": true
+    },
+    "workspace.isHidden": true
+}
