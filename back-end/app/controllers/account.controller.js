@@ -37,12 +37,12 @@ exports.add = (req, res) => {
 };
 
 function validationAccount(account) {
-  const schema = {
+  const schema = Joi.object({
     id: Joi.string().min(1).required(),
     username: Joi.string().min(3).required(),
     password: Joi.string().min(5).required(),
     owner: Joi.string().min(1).required(),
-  };
+  });
 
-  return Joi.validate(account, schema);
+  return schema.validate(account);
 }
