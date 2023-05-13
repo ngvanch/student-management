@@ -9,7 +9,10 @@ app.use(cors());
 
 // Routers
 const homeRouter = require("./app/routes/homeRouter");
+const accountRouter = require("./app/routes/accountRouter");
+
 app.use("/", homeRouter);
+app.use("/", accountRouter);
 
 // Handling Errors
 app.use((err, req, res, next) => {
