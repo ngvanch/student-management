@@ -9,6 +9,7 @@ const Account = (account) => {
 
 Account.add = (id, username, password, owner, result) => {
   var sql;
+  sql = `SELECT id FROM taikhoan`;
   if (owner == null || owner == "")
     sql = `INSERT INTO TAIKHOAN(id, tendn, matkhau, nguoidung) VALUES ("${id}", "${username}", "${password}", ${null})`;
   else

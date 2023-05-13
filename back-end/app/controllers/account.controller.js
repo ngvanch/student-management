@@ -31,7 +31,7 @@ exports.add = (req, res) => {
         Account.getByID(req.body.id, (data) => {
           res.send({ result: data });
         });
-      }
+      } else res.send(data);
     }
   );
 };
