@@ -8,14 +8,13 @@ const Account = (account) => {
 };
 
 Account.add = (id, username, password, owner, result) => {
-  var sql;
-  sql = `SELECT id FROM taikhoan`;
   if (owner == null || owner == "")
     sql = `INSERT INTO TAIKHOAN(id, tendn, matkhau, nguoidung) VALUES ("${id}", "${username}", "${password}", ${null})`;
   else
     sql = `INSERT INTO TAIKHOAN(id, tendn, matkhau, nguoidung) VALUES ("${id}", "${username}", "${password}", "${owner}")`;
   db.query(sql, (err, account) => {
-    if (err) result("Khong the them tai khoan.");
+    if (err && err.code == "ER_DUP_ENTRY") result("Tai khoan da ton tai.");
+    else if (err) result(null);
     else result(200);
   });
 };

@@ -41,7 +41,7 @@ function validationAccount(account) {
     id: Joi.string().min(1).required(),
     username: Joi.string().min(3).required(),
     password: Joi.string().min(5).required(),
-    owner: Joi.string().min(1).required(),
+    owner: Joi.string().min(0).required(),
   });
 
   return schema.validate(account);
