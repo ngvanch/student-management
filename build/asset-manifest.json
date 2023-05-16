@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4aa220e7.css",
+    "main.js": "/static/js/main.0be2e059.js",
+    "static/media/RolexLight.woff2": "/static/media/RolexLight.abd5c539d0d3d699e896.woff2",
+    "index.html": "/index.html",
+    "main.4aa220e7.css.map": "/static/css/main.4aa220e7.css.map",
+    "main.0be2e059.js.map": "/static/js/main.0be2e059.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4aa220e7.css",
+    "static/js/main.0be2e059.js"
+  ]
+}
