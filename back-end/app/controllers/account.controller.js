@@ -1,60 +1,81 @@
 const Joi = require("joi");
+const asyncHandler = require("express-async-handler");
 var Account = require("../models/account.model");
 
-exports.list = (req, res) => {
-  Account.getAll((data) => {
-    res.send({ result: data });
-  });
-};
+exports.getAll = asyncHandler(async (req, res) => {
+  const accounts = await Account.find();
+  res
+    .status(201)
+    .json({ success: true, count: accounts.length, data: accounts });
+});
 
-exports.detail = (req, res) => {
-  Account.getByID(req.params.id, (data) => {
-    if (!data) return res.status(404).send("ID not found.");
-    res.send({ result: data });
-  });
-};
+exports.getAccount = asyncHandler(async (req, res) => {
+  const account = await Account.findByID(req.params);
+  if (!account) {
+    res.status(404);
+    throw new Error("Account not found");
+  }
 
-exports.add = (req, res) => {
+  res.status(201).json({ success: true, data: account });
+});
+
+exports.addAccount = asyncHandler(async (req, res) => {
   const { error } = validationAccount(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) {
+    res.status(400);
+    throw new Error(error.details[0].message);
+  }
 
-  Account.add(req.body, (data) => {
-    if (data == 200) {
-      Account.getByID(req.body.id, (data) => {
-        res.send({ result: data });
-      });
-    } else res.send(data);
-  });
-};
+  const account = await Account.create(req.body);
+  if (account == -409) {
+    res.status(409);
+    throw new Error("Account already exists");
+  }
 
-exports.changePassword = (req, res) => {
-  Account.getByID(req.params.id, (data) => {
-    if (!data) return res.status(404).send("ID not found.");
+  res.status(201).json({ success: true, data: account });
+});
 
-    const schema = Joi.object({
-      id: Joi.string().min(1).required(),
-      password: Joi.string().min(5).required(),
-    });
-    const { error } = schema.validate(req.body);
+exports.updateAccount = asyncHandler(async (req, res) => {
+  let account = await Account.findByID(req.params);
+  if (!account) {
+    res.status(404);
+    throw new Error("Account not found");
+  }
 
-    if (error) return res.status(400).send(error.details[0].message);
+  const { error } = validationAccount(req.body);
+  if (error) {
+    res.status(400);
+    throw new Error(error.details[0].message);
+  }
 
-    Account.changePassword(req.body, (data) => {
-      if (!data) return res.status(500).send("Khong the thay doi mat khau.");
-      else
-        Account.getByID(req.body.id, (data) => {
-          res.send({ result: data });
-        });
-    });
-  });
-};
+  account = await Account.update(req.body, req.params);
+  res.status(201).json({ success: true, data: account });
+});
+
+exports.deleteAccount = asyncHandler(async (req, res) => {
+  let account = await Account.findByID(req.params);
+  if (!account) {
+    res.status(404);
+    throw new Error("Account not found");
+  }
+  /* 
+  if (req.user.id !== account.id.toString()) {
+    res.status(401);
+    throw new Error("User not authorized");
+  } */
+
+  const accounts = await Account.delete(req.params);
+  res
+    .status(201)
+    .json({ success: true, count: accounts.length, data: accounts });
+});
 
 function validationAccount(account) {
   const schema = Joi.object({
-    id: Joi.string().min(1).required(),
     username: Joi.string().min(3).required(),
     password: Joi.string().min(5).required(),
-    owner: Joi.string().min(0).required(),
+    isAdmin: Joi.boolean().required(),
+    owner: Joi.string().min(0),
   });
 
   return schema.validate(account);

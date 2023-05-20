@@ -1,29 +1,24 @@
-const port = 3000;
 const express = require("express");
 const app = express();
-
+const { notFound, errorHandler } = require("./errorHandle");
+const dotenv = require("dotenv");
 const cors = require("cors");
+dotenv.config();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
 
 // Routers
-const homeRouter = require("./app/routes/home.router");
-const accountRouter = require("./app/routes/account.router");
+const homeRouter = require("./routes/home.router");
+const accountRouter = require("./routes/account.router");
 
 app.use("/", homeRouter);
-app.use("/", accountRouter);
+app.use("/users/", accountRouter);
 
-// Handling Errors
-app.use((err, req, res, next) => {
-  // console.log(err);
-  err.statusCode = err.statusCode || 500;
-  err.message = err.message || "Internal Server Error";
-  res.status(err.statusCode).json({
-    message: err.message,
-  });
-});
+app.use(notFound);
+app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log("App is listening port " + port);
+app.listen(PORT, () => {
+  console.log(`App is listening port ${PORT}`);
 });
