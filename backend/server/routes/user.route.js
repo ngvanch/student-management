@@ -10,7 +10,7 @@ router
 
 router
   .route('/:id')
-  .get(protectMiddileware, UserController.getUser)
+  .get(protectMiddleware, UserController.getUser)
   .put(protectMiddleware, UserController.updateUser)
   .delete(protectMiddleware, UserController.deleteUser);
 
