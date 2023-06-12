@@ -17,7 +17,7 @@
 
 - Hệ điều hành Windows 10, Windows 11, Linux
 - Framework: ReactJS, NodeJS
-- Database: MySQL, JSON
+- Database: MongoDB
 
 # Hướng dẫn chạy project 
 
@@ -78,5 +78,6 @@
 
 
 # Các link liên quan
-- Link demo code fontend: https://github.com/ngvanch/nmcnpm
-- 
+- Link demo code frontend: https://github.com/ngvanch/nmcnpm
+- Link demo code backend:
+https://github.com/mizavayx/backend-test
