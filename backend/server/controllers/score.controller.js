@@ -64,6 +64,9 @@ exports.updateScore = asyncHandler(async (req, res) => {
     for (let j = 0; j < score.subjectScore.length; j++) {
       if (scoreUpdate[i].subject == score.subjectScore[j].subject) {
         score.subjectScore[j] = scoreUpdate[i];
+        break;
+      } else if (j == score.subjectScore.length - 1) {
+        score.subjectScore.push(scoreUpdate[i]);
       }
     }
   }
