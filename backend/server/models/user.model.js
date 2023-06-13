@@ -39,6 +39,7 @@ const UserSchema = mongoose.Schema(
     dob: {
       type: Date,
       default: null,
+      get: (date) => date.toLocaleDateString('sp-MX'),
     },
 
     address: {

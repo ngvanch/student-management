@@ -53,16 +53,22 @@ exports.addScore = asyncHandler(async (req, res) => {
  * @requires TOKEN
  */
 exports.updateScore = asyncHandler(async (req, res) => {
-  let score = await Score.find({ student: req.params.id });
+  let score = await Score.findOne({ student: req.params.id });
   if (!score) {
     res.status(404);
     throw new Error('Score not found');
   }
 
-  score = await Score.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const scoreUpdate = req.body.subjectScore;
+  for (let i = 0; i < scoreUpdate.length; i++) {
+    for (let j = 0; j < score.subjectScore.length; j++) {
+      if (scoreUpdate[i].subject == score.subjectScore[j].subject) {
+        score.subjectScore[j] = scoreUpdate[i];
+      }
+    }
+  }
+
+  await score.save();
 
   res.status(201).json({ success: true, data: score });
 });

@@ -28,6 +28,7 @@ const studentSchema = mongoose.Schema({
   dob: {
     type: Date,
     required: [true, 'Please add date of birth'],
+    get: (date) => date.toLocaleDateString('sp-MX'),
   },
 
   email: {

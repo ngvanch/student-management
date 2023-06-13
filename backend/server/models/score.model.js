@@ -5,6 +5,7 @@ const scoreSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'Student',
+    unique: true,
   },
 
   schoolYear: {
@@ -26,18 +27,14 @@ const scoreSchema = mongoose.Schema({
       },
       _15mins: [
         {
-          test: {
-            type: Number,
-            required: true,
-          },
+          type: Number,
+          required: true,
         },
       ],
       _45mins: [
         {
-          test: {
-            type: Number,
-            required: true,
-          },
+          type: Number,
+          required: true,
         },
       ],
       _semester: {

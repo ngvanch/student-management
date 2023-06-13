@@ -103,7 +103,7 @@ exports.deleteStudent = asyncHandler(async (req, res) => {
     throw new Error('Student not found');
   }
 
-  await Student.delete();
+  await student.delete();
 
   res.status(201).json({ success: true, data: {} });
 });

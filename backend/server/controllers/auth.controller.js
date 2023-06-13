@@ -134,7 +134,7 @@ exports.updatePassword = asyncHandler(async (req, res) => {
     throw new Error('Old password incorrect');
   }
 
-  user.password = password;
+  user.password = newPassword;
   await user.save();
 
   res.status(201).json({

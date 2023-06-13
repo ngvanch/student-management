@@ -25,11 +25,9 @@ const classSchema = mongoose.Schema({
 
   students: [
     {
-      student: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Student',
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Student',
     },
   ],
 });
