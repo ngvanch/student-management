@@ -336,20 +336,20 @@ npm run dev
 ```javascript
 {
 "subjectScore":[
-{
-"subject": "Toan Hoc",
-"_15mins": [6, 8, 9],
-"_45mins": [7, 8, 2],
-"_semester": 9
-},
-{
-"subject": "Van Hoc",
-"_15mins": [6, 8, 10, 9],
-"_45mins": [2],
-"_semester": 10
-},
-...
-]
+    {
+      "subject": "Toan Hoc",
+      "_15mins": [6, 8, 9],
+      "_45mins": [7, 8, 2],
+      "_semester": 9
+    },
+    {
+      "subject": "Van Hoc",
+      "_15mins": [6, 8, 10, 9],
+      "_45mins": [2],
+      "_semester": 10
+    },
+    ...
+  ]
 }
 ```
 
