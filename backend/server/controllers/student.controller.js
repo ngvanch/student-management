@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Student = require('../models/student.model');
+const Class = require('../models/class.model');
 
 /**
  * @desc Get all student
@@ -9,10 +10,8 @@ const Student = require('../models/student.model');
  * @requires TOKEN
  */
 exports.getAll = asyncHandler(async (req, res) => {
-  // TODO: query requests
-  // let query = req.query;
-
-  const students = await Student.find({});
+  const _class = req.body.class || null;
+  const students = await Student.find({ class: _class });
   if (!students) {
     res.status(404);
     throw new Error('Student not found');
