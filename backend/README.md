@@ -222,6 +222,14 @@ npm run dev
 - Method: **GET**
 - Truy cập: Riêng tư
 - Yêu cầu: `User` đã đăng nhập vào hệ thống.
+- Optional (Có thể truy xuất danh sách học sinh theo tên lớp bằng cách gửi kèm body của request):
+
+  __request.body__ json: 
+  ```javascript
+    {
+        "class": "10A5"
+    }
+  ```
 
 #### Xuất thông tin học sinh theo _ID_:
 
